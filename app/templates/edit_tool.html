@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <form action="{% url 'edit_tool' tool_id=tool.id %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <br>
+          {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" onclick="window.location.href='/transfer-tool/{{tool.id}}'" class="btn btn-secondary">
+                Transfer Ownership
+            </button>
+        {% endbuttons %}
+    </form>
+    
+{% endblock %}

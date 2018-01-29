@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% load static %}
+{% block content %}
+
+  <div style="display:flex;">
+    <div style="width:500px">
+     <h5>
+         <p style="text-align: left;">
+             This service is in BETA, and we would appreciate your feedback!
+             <br><br>
+             Please leave some in the box below, or you can contact the ISR developers directly by emailing Daniel.Marshall@schneider-electric.com. <br><br>
+         </p>
+     </h5>
+
+  {% load bootstrap3 %}
+      <form action="{% url 'contact_devs' %}" method="post" class="form">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <br>
+          {% buttons %}
+              <button type="submit" class="btn btn-primary">
+                  Submit
+              </button>
+          {% endbuttons %}
+      </form>
+    </div>
+
+    <div style="padding-top:50px;flex-grow:1" align="center">
+      <img src="{% static 'img/collaboration-is-fun.png' %}" width="60%">
+
+    </div>  
+  </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+dd {
+  padding: 0 0 0.9em 0;
+}
+
+.twitter-typeahead {
+    color: blue !important;
+}
+
+.navbar {
+    background-color: #3DCD58;
+    border-color: #3DCD58;
+    font-size: 17px;
+}
+
+.navbar a {
+    color: white !important;
+}
+
+.navbar-brand {
+    font-size: 38px;
+    padding-left: 30px;
+    color: white !important;
+}
+
+.table-striped th {
+    background-color: #3DCD58 !important;
+    color: white;
+    border-color: #3DCD58 !important;
+    font-size: 18px;
+    min-width: 120px;
+}
+
+.table-striped {
+    word-wrap: break-word;
+}
+
+.set-width th{
+    width: 190px;
+}
+
+.text-center h1{
+    font-size: 45px;
+}
+
+body {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif !important;
+}
+
+.input-loading {
+    background-color: #ffffff;
+    /*background-image: url("http://loadinggif.com/images/image-selection/3.gif");*/
+    background-size: 25px 25px;
+    background-position:right center;
+    background-repeat: no-repeat;
+}

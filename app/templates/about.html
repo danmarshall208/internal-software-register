@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% load static %}
+{% block content %}
+
+
+
+    <div class="page-header">
+        <h2>The Internal Software Registry</h2>
+    </div>
+    <div style="display:flex;">
+        <div style="width:40%;">
+            The Internal Software Registry (ISR) was created to allow Schneider Electric employees to share and manage their software creations.
+            <br>
+            The aim of this registry is to bring visibility to DIY software and to facilitate maintenance.
+            <br><br>
+            Examples of things that you could record onto the ISR are:
+            <ul>
+                <li>Wikis</li>
+                <li>Configuration scripts for engineering projects</li>
+                <li>Quote tools</li>
+                <li>Big spreadsheets for use by multiple people</li>
+                <li>OneNote directories</li>
+                <li>Databases</li>
+                <li>Services running on servers</li>
+                <li>Small programs</li>
+                <li>Team detail registers</li>
+            </ul>
+
+            <br>
+        </div>
+        <div style="flex-grow:1;" align="right">
+            <img src="{% static 'img/digitize.png' %}" width="70%">
+        </div>
+    </div>
+
+    <div style="background-color:rgb(218,240,210);padding-top:30px;padding-left:30px;">
+        <h1>Search for a tool</h1><br>
+    </div>
+    <div style="background-color:rgb(218,240,210);padding-left:30px;padding-bottom:50px;display:flex;">
+            <div style="width:400px;">
+            Do a search for tools by name, people or tags.
+            </div>
+            <div style="flex-grow:1" align="center">
+            <img src="{% static 'img/search-screenshot.png' %}" width="400px">
+            </div>
+    </div>
+
+
+
+    <div style="padding-top:30px;padding-left:30px;">
+        <h1>Catalogue your own</h1><br>
+    </div>
+    <div style="padding-left:30px;padding-bottom:50px;display:flex;">
+        <div style="width:400px;">
+            <img src="{% static 'img/add-tool-screenshot.png' %}" width="300px">
+        </div>
+        <div style="padding-left:30px;flex-grow:1">
+            To add an item to the ISR click the <i>Add Tool</i> button on the <i>My Tools</i> page.
+
+            You will need to add some information about the tool including:
+            <ul><li>its name</li>
+            <li>the developer</li>
+            <li>a short description</li>
+            <li>a long description</li>
+            <li>its location: how or where it is stored or accessed from</li>
+            <li>tags: similar to using hashtags on Twitter, use tags on the ISR to help categorise your tool</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div style="background-color:rgb(218,240,210);padding-top:30px;padding-left:30px;">
+        <h1>Manage your portfolio</h1><br>
+    </div>
+    <div style="background-color:rgb(218,240,210);padding-left:30px;padding-bottom:50px;display:flex;">
+            <div style="width:400px;">
+            Check and update your tools by clicking <i>My Tool</i> on the navigation bar, selecting a tool, and then clicking the <i>Edit</i> button on the right side of the page.
+            </div>
+            <div style="flex-grow:1" align="center">
+            <img src="{% static 'img/edit-tool-screenshot2.png' %}" width="650" height="120">
+            </div>
+    </div>
+
+
+
+{% endblock %}

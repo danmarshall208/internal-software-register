@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="page-header text-center">
+      <h1>Internal Software Register</h1>
+      <h5><br><br></h5>
+      <h1 style="font-size:50px;">Search</h1>
+    </div>
+
+    <form action="{% url 'results' %}">
+      <div class="form-group form-group-lg">
+        <input name="text_search" type="text" class="form-control" placeholder="Tool Name Or Description" aria-describedby="sizing-addon1">
+      </div>
+      <div class="form-group form-group-lg">
+        <input id="tag_search" name="tag_search" type="text" class="form-control" placeholder="Tags" aria-descibedby="sizing-addon1">
+      </div>
+      <div class="text-center">
+       {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+          <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </form>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var tags = {{tag_names |safe}};
+            // Constructs the suggestion engine
+            var engine = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                local: tags
+            });
+            engine.initialize();
+
+            // Initializing the typeahead with remote dataset
+            //var options = new HashTable({hint: false});
+            $('#tag_search').tokenfield({
+              typeahead: [{hint: false}, { source: engine.ttAdapter() }]
+            });
+        }); </script>
+{% endblock %}

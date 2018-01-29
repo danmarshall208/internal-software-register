@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+    <div class="page-header">
+      <h2>Transfer Tool</h2>
+    </div>
+
+    <br>
+    <div class="text-center">
+      <b><i>{{tool.name}}</i></b>
+    </div>
+
+    <br><br>
+    <form action="{% url 'transfer_tool' tool_id=tool.id %}" method="post">
+      {% csrf_token %}
+      <div class="form-group form-group-lg">
+        <input id="name_input" name="name_input" type="text" class="form-control input-loading" placeholder="New Owner" aria-describedby="sizing-addon1">
+      </div>
+      <div class="text-center">
+          <button type="submit" class="btn btn-default" onclick="return confirm('Are you sure you want to transfer this item? ' +
+          'You will not be able to access it unless the other person transfers it back.');">Submit</button>
+      </div>
+    </form>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // Constructs the suggestion engine
+            var engine = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                  url: '../../users/?name=%QUERY',
+                  wildcard: '%QUERY'
+                },
+                local: ['test']
+            });
+            engine.initialize();
+
+            // Initializing the typeahead with remote dataset
+            $('#name_input').typeahead({
+              minLength: 3
+            }, {
+              source: engine
+            })
+            .on('typeahead:asyncrequest', function() {
+              $('.input-loading').css("background-image","url({% static 'img/spinner.gif' %})");
+            })
+            .on('typeahead:asynccancel typeahead:asyncreceive', function() {
+              $('.input-loading').css("background-image","");
+            });
+        }); </script>
+{% endblock %}
